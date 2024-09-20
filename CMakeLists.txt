@@ -23,7 +23,6 @@ file(GLOB_RECURSE MSDFGEN_EXT_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "ext/
 add_library(msdfgen-core "${CMAKE_CURRENT_SOURCE_DIR}/msdfgen.h" ${MSDFGEN_CORE_HEADERS} ${MSDFGEN_CORE_SOURCES})
 add_library(msdfgen::msdfgen-core ALIAS msdfgen-core)
 set_target_properties(msdfgen-core PROPERTIES PUBLIC_HEADER "${MSDFGEN_CORE_HEADERS}")
-set_property(TARGET msdfgen-core PROPERTY MSVC_RUNTIME_LIBRARY "${MSDFGEN_MSVC_RUNTIME}")
 target_compile_definitions(msdfgen-core PUBLIC
     MSDFGEN_VERSION=${MSDFGEN_VERSION}
     MSDFGEN_VERSION_MAJOR=${MSDFGEN_VERSION_MAJOR}
@@ -47,7 +46,6 @@ add_subdirectory("freetype")
 add_library(msdfgen-ext "${CMAKE_CURRENT_SOURCE_DIR}/msdfgen-ext.h" ${MSDFGEN_EXT_HEADERS} ${MSDFGEN_EXT_SOURCES})
 add_library(msdfgen::msdfgen-ext ALIAS msdfgen-ext)
 set_target_properties(msdfgen-ext PROPERTIES PUBLIC_HEADER "${MSDFGEN_EXT_HEADERS}")
-set_property(TARGET msdfgen-ext PROPERTY MSVC_RUNTIME_LIBRARY "${MSDFGEN_MSVC_RUNTIME}")
 target_compile_definitions(msdfgen-ext INTERFACE MSDFGEN_EXTENSIONS)
 target_compile_definitions(msdfgen-ext PUBLIC MSDFGEN_DISABLE_SVG)
 target_compile_definitions(msdfgen-ext PUBLIC MSDFGEN_DISABLE_PNG)
